@@ -1,0 +1,32 @@
+<div class="full-height-layout bg-primary">
+  <main class="main">
+    <div class="login">
+      <div class="card shadow">
+        <div class="card-body">
+          <h1 class="h4 mb-4 text-center">Login</h1>
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="Firstname">First Name</label>
+              <input type="text" id="Firstname" class="form-control" formControlName="Firstname">
+              <div *ngIf="myForm.get('Firstname')?.invalid && (myForm.get('Firstname')?.dirty || myForm.get('Firstname')?.touched)" class="text-danger">
+                First Name is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Lastname">Last Name</label>
+              <input type="text" id="Lastname" class="form-control" formControlName="Lastname">
+              <div *ngIf="myForm.get('Lastname')?.invalid && (myForm.get('Lastname')?.dirty || myForm.get('Lastname')?.touched)" class="text-danger">
+                Last Name is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Email">Email</label>
+              <input type="email" id="Email" class="form-control" formControlName="Email">
+              <div *ngIf="myForm.get('Email')?.errors?.['required']" >Email is required</div>
+              <div *ngIf="myForm.get('Email')?.errors?.['email']">Invalid email format</div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
